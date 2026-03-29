@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "tracking": "Suivi de livraison",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "CS Cars Agency",
+      "subtitle": "Importation de Voitures depuis la Chine vers l'Algérie",
+      "description": "Nous sommes spécialistes dans l'importation de véhicules neufs et d'occasion (jusqu'à 3 ans) directement depuis la Chine avec inspection certifiée.",
+      "cta": "Découvrir nos services",
+      "keywords": "importation voiture Chine, concessionnaire automobile Algérie, import voiture Chine Algérie, inspection véhicule Chine, voitures chinoises neuves"
+    },
+    "vehicles": {
+      "title": "Nos Modèles Phares"
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "research": {
+      "title": "Recherche et Vérification",
+      "description": "Recherche et vérification technique et historique des véhicules."
+    },
+    "assistance": {
+      "title": "Accompagnement Complet",
+      "description": "Accompagnement complet jusqu’à la livraison du véhicule."
+    },
+    "options": {
+      "title": "Multiples Options",
+      "description": "Large variété de prix et qualité."
+    },
+    "reports": {
+      "title": "Rapports Techniques",
+      "description": "Rapports techniques agréés fournis par des partenaires en Chine."
+    }
+  },
+  "tracking": {
+    "title": "Suivi de Livraison",
+    "placeholder": "Numéro de Conteneur",
+    "button": "Suivre",
+    "status": "Statut",
+    "vessel": "Navire",
+    "eta": "Arrivée Estimée",
+    "error": "Impossible de trouver ce conteneur.",
+    "timeline": {
+      "completed": "Terminé",
+      "pending": "En attente"
+    }
+  },
+  "footer": {
+    "location": "Sétif, Algérie",
+    "follow": "Suivez-nous"
+  }
+}

@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cs-primary: #111111; /* Dark dominant automotive */
+  --color-cs-secondary: #e60000; /* Red from logo */
+  --color-cs-accent: #ffffff; /* White text */
+  --color-cs-gray: #1a1a1a; /* Lighter dark */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-cs-primary);
+    color: var(--color-cs-accent);
+    font-family: 'Inter', sans-serif; /* Modern, clean typography */
+}
+
+/* RTL Support base class */
+.rtl-layout {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr-layout {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Section scrolling snap container */
+.scroll-snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.scroll-snap-section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
