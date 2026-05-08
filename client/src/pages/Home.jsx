@@ -4,12 +4,21 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Search, ShieldCheck, Tag, FileText } from 'lucide-react';
 
+const imagesObj = import.meta.glob('../assets/*/*.webp', { eager: true });
+
+const getImgs = (folderKeyword) => {
+  return Object.entries(imagesObj)
+    .filter(([path]) => path.includes(folderKeyword))
+    .map(([, module]) => module.default || module);
+};
+
 const vehicles = [
-  { id: 1, name: "2026 GAC GS3", img: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=600&auto=format&fit=crop" },
-  { id: 2, name: "Livan X3 Pro", img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600&auto=format&fit=crop" },
-  { id: 3, name: "VW Golf 8.5R", img: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=600&auto=format&fit=crop" },
-  { id: 4, name: "VW T-ROC", img: "https://images.unsplash.com/photo-1518987048-93e29699e79a?q=80&w=600&auto=format&fit=crop" },
-  { id: 5, name: "2026 Geely Coolray", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" }
+  { id: 1, name: "2026 GAC GS3", imgs: getImgs('GAC GS3') },
+  { id: 2, name: "Livan X3 Pro", imgs: getImgs('LivanX3pro') },
+  { id: 3, name: "VW T-ROC", imgs: getImgs('VW T-ROC') },
+  { id: 4, name: "2026 Geely Coolray", imgs: getImgs('Coolray-Battle') },
+  { id: 5, name: "Changan X5", imgs: getImgs('ChanganX5') },
+  { id: 6, name: "MG 5", imgs: getImgs('MG5') }
 ];
 
 const Home = () => {
@@ -71,7 +80,7 @@ const Home = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {vehicles.map((vehicle, index) => (
               <motion.div
                 key={vehicle.id}
@@ -81,12 +90,42 @@ const Home = () => {
                 transition={{ delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-xl bg-[#1a1a1a] aspect-[4/3] md:aspect-auto md:h-64 cursor-pointer"
               >
-                <img 
-                  src={vehicle.img} 
-                  alt={vehicle.name} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex items-end p-4">
+                <div 
+                  id={`scroll-container-${vehicle.id}`}
+                  className="w-full h-full overflow-y-auto snap-y snap-mandatory scrollbar-hide flex flex-col"
+                >
+                  {vehicle.imgs && vehicle.imgs.map((img, i) => (
+                    <div key={i} className="w-full h-full shrink-0 snap-start relative">
+                      <img 
+                        src={img} 
+                        alt={`${vehicle.name} ${i}`} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Sticky Vertical Navigation */}
+                {vehicle.imgs && vehicle.imgs.length > 1 && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20">
+                    {vehicle.imgs.map((_, i) => (
+                      <button 
+                        key={i} 
+                        className="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors hover:scale-125"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const container = document.getElementById(`scroll-container-${vehicle.id}`);
+                          if (container) {
+                            container.scrollTo({ top: i * container.clientHeight, behavior: 'smooth' });
+                          }
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 pointer-events-none z-10">
                   <h3 className="text-white font-bold text-lg tracking-wide">{vehicle.name}</h3>
                 </div>
               </motion.div>
