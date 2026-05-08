@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Search, ShieldCheck, Tag, FileText } from 'lucide-react';
+import arBg from '../assets/ARABIC_VERSION_BG.png';
+import frBg from '../assets/FRANCH_VERSION_BG.png';
 
 const imagesObj = import.meta.glob('../assets/*/*.webp', { eager: true });
 
@@ -22,7 +24,9 @@ const vehicles = [
 ];
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const currentBg = i18n.language === 'ar' ? arBg : frBg;
 
   const services = [
     { id: 'research', icon: Search, color: "text-blue-500", key: "services.research" },
@@ -34,40 +38,94 @@ const Home = () => {
   return (
     <div className="bg-[#0a0a0a] min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=2000&auto=format&fit=crop")'}}
+      <section className="relative min-h-screen pt-32 pb-20 flex flex-col justify-center bg-white overflow-hidden">
+        {/* Subtle dot pattern background */}
+        <div
+          className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }}
         />
 
-        <div className="container mx-auto px-6 relative z-20 text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <h2 className="text-[#e60000] font-bold tracking-wider uppercase mb-2 text-sm md:text-base">
-              {t('home.hero.keywords')}
-            </h2>
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-              {t('home.hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl font-light">
-              {t('home.hero.description')}
-            </p>
-            
-            <Link to="/services">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#e60000] text-white px-8 py-4 rounded-md font-bold text-lg flex items-center gap-2 hover:bg-red-700 transition-colors shadow-lg shadow-red-900/20"
+        {/* Glowing blobs for premium feel */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-200 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gray-100 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 opacity-50 pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col justify-center">
+          <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12 lg:gap-20">
+
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: i18n.language === 'ar' ? 30 : -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 max-w-2xl"
+            >
+              <h2 className="text-black font-bold tracking-widest uppercase mb-4 text-sm md:text-base flex items-center gap-3">
+                <span className="w-10 h-[2px] bg-black"></span>
+                {t('home.hero.keywords')}
+              </h2>
+              <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-black text-black mb-8 leading-[1.1] tracking-tight">
+                {t('home.hero.title')}
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-500 mb-10 font-light leading-relaxed">
+                {t('home.hero.description')}
+              </p>
+
+              <div className="flex items-center gap-6">
+                <Link to="/services">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-gray-800 transition-all shadow-xl shadow-black/20"
+                  >
+                    {t('home.hero.cta')}
+                    <ChevronRight size={20} className={i18n.language === 'ar' ? 'rotate-180' : ''} />
+                  </motion.button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: i18n.language === 'ar' ? -30 : 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex-1 w-full relative"
+            >
+              {/* Image Container with premium rounded styling */}
+              <img
+                src={currentBg}
+                alt="Hero Presentation"
+                className={`w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 ${i18n.language === 'ar' ? 'object-left' : 'object-right'}`}
+              />
+
+              {/* Decorative floating element */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className={`absolute -bottom-6 ${i18n.language === 'ar' ? '-right-6' : '-left-6'} bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 z-20`}
               >
-                {t('home.hero.cta')} <ChevronRight />
-              </motion.button>
-            </Link>
-          </motion.div>
+                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white">
+                  <ShieldCheck size={24} />
+                </div>
+                <div className={i18n.language === 'ar' ? 'text-right' : 'text-left'}>
+                  <p className="text-xs text-gray-500 font-semibold uppercase">CS Cars</p>
+                  <p className="text-sm font-bold text-black">Quality Assured</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* Brands Section at bottom */}
+        <div className="container mx-auto px-6 mt-20 relative z-10">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+            {['GEELY', 'CHANGAN', 'MG', 'GAC MOTOR', 'LIVAN', 'VOLKSWAGEN'].map((brand, idx) => (
+              <span key={idx} className="text-xl md:text-2xl font-black uppercase tracking-widest text-black">
+                {brand}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -90,15 +148,15 @@ const Home = () => {
                 transition={{ delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-xl bg-[#1a1a1a] aspect-[4/3] md:aspect-auto md:h-64 cursor-pointer"
               >
-                <div 
+                <div
                   id={`scroll-container-${vehicle.id}`}
                   className="w-full h-full overflow-y-auto snap-y snap-mandatory scrollbar-hide flex flex-col"
                 >
                   {vehicle.imgs && vehicle.imgs.map((img, i) => (
                     <div key={i} className="w-full h-full shrink-0 snap-start relative">
-                      <img 
-                        src={img} 
-                        alt={`${vehicle.name} ${i}`} 
+                      <img
+                        src={img}
+                        alt={`${vehicle.name} ${i}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                       />
                     </div>
@@ -109,8 +167,8 @@ const Home = () => {
                 {vehicle.imgs && vehicle.imgs.length > 1 && (
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20">
                     {vehicle.imgs.map((_, i) => (
-                      <button 
-                        key={i} 
+                      <button
+                        key={i}
                         className="w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white transition-colors hover:scale-125"
                         onClick={(e) => {
                           e.preventDefault();
@@ -137,7 +195,7 @@ const Home = () => {
       {/* Services Section */}
       <section className="py-24 bg-black">
         <div className="container mx-auto px-6">
-           <div className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               {t('services.title')}
             </h2>

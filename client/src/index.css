@@ -5,6 +5,7 @@
   --color-cs-secondary: #e60000; /* Red from logo */
   --color-cs-accent: #ffffff; /* White text */
   --color-cs-gray: #1a1a1a; /* Lighter dark */
+  --font-sans: 'Industry', sans-serif;
 }
 
 html {
@@ -14,7 +15,7 @@ html {
 body {
     background-color: var(--color-cs-primary);
     color: var(--color-cs-accent);
-    font-family: 'Inter', sans-serif; /* Modern, clean typography */
+    font-family: 'Industry', sans-serif; /* Modern, clean typography */
 }
 
 /* RTL Support base class */
