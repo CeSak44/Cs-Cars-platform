@@ -38,50 +38,26 @@ const Home = () => {
   return (
     <div className="bg-[#0a0a0a] min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-32 pb-20 flex flex-col justify-center bg-white overflow-hidden">
-        {/* Subtle dot pattern background */}
-        <div
-          className="absolute inset-0 z-0 opacity-10 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, black 1px, transparent 0)', backgroundSize: '40px 40px' }}
-        />
-
-        {/* Glowing blobs for premium feel */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gray-200 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gray-100 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 opacity-50 pointer-events-none" />
-
-        <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col justify-center">
-          <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12 lg:gap-20">
+      <section className="relative min-h-screen pt-32 pb-8 flex flex-col justify-center bg-white overflow-hidden">
+        
+        <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col justify-between h-full pt-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12 lg:gap-0 mt-10">
 
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: i18n.language === 'ar' ? 30 : -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex-1 max-w-2xl"
+              className="flex-1 max-w-2xl z-20"
             >
-              <h2 className="text-black font-bold tracking-widest uppercase mb-4 text-sm md:text-base flex items-center gap-3">
-                <span className="w-10 h-[2px] bg-black"></span>
-                {t('home.hero.keywords')}
-              </h2>
-              <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-black text-black mb-8 leading-[1.1] tracking-tight">
-                {t('home.hero.title')}
+              <h1 className="text-[3.5rem] md:text-6xl lg:text-[5.5rem] font-black text-black mb-6 leading-[1.05] tracking-tight max-w-[15ch]">
+                Premium<br />
+                Car Rental<br />
+                in New York
               </h1>
-              <p className="text-xl md:text-2xl text-gray-500 mb-10 font-light leading-relaxed">
-                {t('home.hero.description')}
+              <p className="text-lg md:text-xl text-gray-700 mb-10 font-medium leading-relaxed max-w-md">
+                Don't deny yourself the pleasure of driving the best premium cars from around the world here and now
               </p>
-
-              <div className="flex items-center gap-6">
-                <Link to="/services">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-gray-800 transition-all shadow-xl shadow-black/20"
-                  >
-                    {t('home.hero.cta')}
-                    <ChevronRight size={20} className={i18n.language === 'ar' ? 'rotate-180' : ''} />
-                  </motion.button>
-                </Link>
-              </div>
             </motion.div>
 
             {/* Right Image */}
@@ -89,42 +65,43 @@ const Home = () => {
               initial={{ opacity: 0, x: i18n.language === 'ar' ? -30 : 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1 w-full relative"
+              className={`absolute top-1/2 -translate-y-1/2 w-[90%] md:w-[70%] lg:w-[65%] z-10 pointer-events-none ${i18n.language === 'ar' ? 'left-[-5%]' : 'right-[-5%]'}`}
             >
-              {/* Image Container with premium rounded styling */}
               <img
                 src={currentBg}
                 alt="Hero Presentation"
-                className={`w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 ${i18n.language === 'ar' ? 'object-left' : 'object-right'}`}
+                className="w-full h-auto object-contain scale-110 md:scale-125 origin-center"
               />
-
-              {/* Decorative floating element */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className={`absolute -bottom-6 ${i18n.language === 'ar' ? '-right-6' : '-left-6'} bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 z-20`}
-              >
-                <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white">
-                  <ShieldCheck size={24} />
-                </div>
-                <div className={i18n.language === 'ar' ? 'text-right' : 'text-left'}>
-                  <p className="text-xs text-gray-500 font-semibold uppercase">CS Cars</p>
-                  <p className="text-sm font-bold text-black">Quality Assured</p>
-                </div>
-              </motion.div>
             </motion.div>
 
           </div>
-        </div>
 
-        {/* Brands Section at bottom */}
-        <div className="container mx-auto px-6 mt-20 relative z-10">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-            {['GEELY', 'CHANGAN', 'MG', 'GAC MOTOR', 'LIVAN', 'VOLKSWAGEN'].map((brand, idx) => (
-              <span key={idx} className="text-xl md:text-2xl font-black uppercase tracking-widest text-black">
-                {brand}
-              </span>
-            ))}
+          {/* Brands Section at bottom */}
+          <div className="w-full mt-auto pt-20 relative z-20">
+            <div className="flex flex-wrap items-center justify-between gap-4 py-8">
+              {[
+                { name: 'Lamborghini', url: 'https://upload.wikimedia.org/wikipedia/en/d/df/Lamborghini_Logo.svg' },
+                { name: 'BMW', url: 'https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg' },
+                { name: 'Tesla', url: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg' },
+                { name: 'Cadillac', url: 'https://upload.wikimedia.org/wikipedia/commons/1/14/Cadillac_logo_2014.svg' },
+                { name: 'Porsche', url: 'https://upload.wikimedia.org/wikipedia/en/8/8c/Porsche_logo.svg' },
+                { name: 'Mercedes', url: 'https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg' },
+                { name: 'Lexus', url: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Lexus_logo.svg' },
+                { name: 'Ferrari', url: 'https://upload.wikimedia.org/wikipedia/en/d/d1/Ferrari-Logo.svg' },
+              ].map((brand, idx) => (
+                <div 
+                  key={idx} 
+                  className={`w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-2xl cursor-pointer transition-all duration-300
+                    ${idx === 4 ? 'border border-gray-200 bg-white scale-110 shadow-sm opacity-100 grayscale-0' : 'grayscale opacity-40 hover:grayscale-0 hover:opacity-100'}`}
+                >
+                  <img src={brand.url} alt={brand.name} className={`object-contain ${idx === 4 ? 'w-10 h-10 md:w-14 md:h-14' : 'w-8 h-8 md:w-10 md:h-10'}`} />
+                </div>
+              ))}
+              
+              <button className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors bg-white shadow-sm">
+                <ChevronRight size={20} className="text-black" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
