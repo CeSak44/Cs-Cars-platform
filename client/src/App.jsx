@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Models from './pages/Models';
 import ModelDetails from './pages/ModelDetails';
+import Contact from './pages/Contact';
 // import Tracking from './pages/Tracking';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/models" element={<Models />} />
           <Route path="/models/:modelId" element={<ModelDetails />} />
+          <Route path="/contact" element={<Contact />} />
           {/* <Route path="/tracking" element={<Tracking />} /> */}
         </Routes>
       </Layout>

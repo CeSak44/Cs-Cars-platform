@@ -22,8 +22,8 @@ const Models = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tight">Our <span className="text-[#F50101]">Models</span></h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">Explore our premium selection of vehicles. Engineered for excellence, designed for you.</p>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tight">{t('models_page.title_our')} <span className="text-[#F50101]">{t('models_page.title_models')}</span></h1>
+          <p className="text-gray-400 max-w-2xl mx-auto">{t('models_page.subtitle')}</p>
         </motion.div>
 
         {/* Filters */}
@@ -34,7 +34,7 @@ const Models = () => {
               onClick={() => setSelectedBrand(brand)}
               className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${selectedBrand === brand ? 'bg-[#F50101] text-white shadow-lg shadow-[#F50101]/20' : 'bg-[#1a1a1a] text-gray-400 hover:text-white hover:bg-[#222]'}`}
             >
-              {brand}
+              {brand === 'All' ? t('models_page.all_brands') : brand}
             </button>
           ))}
         </div>

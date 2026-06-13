@@ -26,7 +26,7 @@ const ModelDetails = () => {
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#F50101] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white">Loading Vehicle Data...</p>
+          <p className="text-white">{t('model_details.loading')}</p>
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ const ModelDetails = () => {
           className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
         >
           <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="font-medium tracking-wide uppercase text-sm">Back to Models</span>
+          <span className="font-medium tracking-wide uppercase text-sm">{t('model_details.back_to_models')}</span>
         </button>
       </div>
 
@@ -61,10 +61,10 @@ const ModelDetails = () => {
                <button onClick={() => {
                  document.getElementById('cta-section').scrollIntoView({ behavior: 'smooth' });
                }} className="bg-[#F50101] hover:bg-[#cc0000] text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-[#F50101]/20 transition-all">
-                 Request Information
+                 {t('model_details.request_info')}
                </button>
                <button onClick={() => setGalleryOpen(true)} className="bg-[#1a1a1a] hover:bg-[#222] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all">
-                 <Maximize2 size={18} /> View Gallery
+                 <Maximize2 size={18} /> {t('model_details.view_gallery')}
                </button>
             </div>
           </motion.div>
@@ -89,7 +89,7 @@ const ModelDetails = () => {
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-4 font-semibold whitespace-nowrap capitalize transition-colors border-b-2 ${activeTab === tab ? 'border-[#F50101] text-white' : 'border-transparent text-gray-400 hover:text-white'}`}
             >
-              {tab}
+              {t(`model_details.tabs.${tab}`)}
             </button>
           ))}
         </div>
@@ -99,7 +99,7 @@ const ModelDetails = () => {
         {/* Specifications Tab */}
         {activeTab === 'specifications' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-            <h3 className="text-3xl font-bold mb-8">Technical Specifications</h3>
+            <h3 className="text-3xl font-bold mb-8">{t('model_details.specs_title')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {Object.entries(model.specs).map(([key, value]) => (
                 <div key={key} className="bg-[#111] p-6 rounded-xl border border-[#222] hover:border-[#F50101]/30 transition-colors">
@@ -114,7 +114,7 @@ const ModelDetails = () => {
         {/* Editions Tab */}
         {activeTab === 'editions' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-            <h3 className="text-3xl font-bold mb-8">Available Editions</h3>
+            <h3 className="text-3xl font-bold mb-8">{t('model_details.editions_title')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {model.editions.map((edition, idx) => (
                 <div key={idx} className="bg-[#111] rounded-2xl p-8 border border-[#222] relative overflow-hidden group hover:border-[#F50101]/50 transition-all">
@@ -137,7 +137,7 @@ const ModelDetails = () => {
         {/* Features Tab */}
         {activeTab === 'features' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-             <h3 className="text-3xl font-bold mb-8">Key Features</h3>
+             <h3 className="text-3xl font-bold mb-8">{t('model_details.features_title')}</h3>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                {model.features.map((feature, idx) => (
                  <div key={idx} className="bg-[#111] p-8 rounded-xl border border-[#222] hover:bg-[#151515] transition-colors">
@@ -155,24 +155,24 @@ const ModelDetails = () => {
         {/* Pricing Tab */}
         {activeTab === 'pricing' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-             <h3 className="text-3xl font-bold mb-6">Pricing Information</h3>
+             <h3 className="text-3xl font-bold mb-6">{t('model_details.pricing_title')}</h3>
              <div className="bg-[#F50101]/10 border border-[#F50101]/30 p-6 rounded-xl mb-8">
                <p className="text-gray-300 italic leading-relaxed">
-                 "Les prix affichés peuvent varier en fonction des frais de transport, des coûts d'importation et des fluctuations du marché. Veuillez contacter notre équipe commerciale pour obtenir une offre actualisée."
+                 {t('model_details.pricing_notice')}
                </p>
              </div>
              
              <div className="space-y-4 bg-[#111] p-8 rounded-2xl border border-[#222]">
                 <div className="flex justify-between items-center border-b border-[#333] pb-4">
-                  <span className="text-xl font-medium">Version 1</span>
+                  <span className="text-xl font-medium">{t('model_details.version_1')}</span>
                   <span className="text-2xl font-bold text-[#F50101] tracking-wide">______ DA</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-[#333] pb-4 pt-2">
-                  <span className="text-xl font-medium">Version 2</span>
+                  <span className="text-xl font-medium">{t('model_details.version_2')}</span>
                   <span className="text-2xl font-bold text-[#F50101] tracking-wide">______ DA</span>
                 </div>
                 <div className="flex justify-between items-center pt-2">
-                  <span className="text-xl font-medium">Version 3</span>
+                  <span className="text-xl font-medium">{t('model_details.version_3')}</span>
                   <span className="text-2xl font-bold text-[#F50101] tracking-wide">______ DA</span>
                 </div>
              </div>
@@ -192,15 +192,15 @@ const ModelDetails = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center bg-gradient-to-b from-[#151515] to-[#0d0d0d] p-10 rounded-3xl border border-[#222]">
                <div>
-                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">Engine</p>
+                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">{t('model_details.engine')}</p>
                   <p className="text-2xl md:text-3xl font-light">{model.specs.engine}</p>
                </div>
                <div className="border-t md:border-t-0 md:border-l border-[#333] pt-6 md:pt-0">
-                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">Power</p>
+                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">{t('model_details.power')}</p>
                   <p className="text-2xl md:text-3xl font-light">{model.specs.power}</p>
                </div>
                <div className="border-t md:border-t-0 md:border-l border-[#333] pt-6 md:pt-0">
-                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">Consumption</p>
+                  <p className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">{t('model_details.consumption')}</p>
                   <p className="text-2xl md:text-3xl font-light">{model.specs.consumption}</p>
                </div>
             </div>
@@ -212,15 +212,15 @@ const ModelDetails = () => {
       <div id="cta-section" className="container mx-auto px-6 mt-32">
         <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#333] rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#F50101] to-transparent"></div>
-          <h3 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Ready to drive the {model.name}?</h3>
-          <p className="text-gray-400 mb-10 max-w-xl mx-auto text-lg">Get in touch with our sales team for an exclusive consultation, test drive, or custom quote.</p>
+          <h3 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">{t('model_details.ready_to_drive', { name: model.name })}</h3>
+          <p className="text-gray-400 mb-10 max-w-xl mx-auto text-lg">{t('model_details.ready_subtitle')}</p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
              <button className="bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3 transition-all text-lg">
-                <Phone size={22} /> Request a Call
+                <Phone size={22} /> {t('model_details.request_call')}
              </button>
              <a href="https://chat.whatsapp.com/Jad0I9rPW8SDr7Fb4RWCLl" target="_blank" rel="noreferrer" className="bg-[#25D366] hover:bg-[#1ebd5b] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3 transition-all shadow-lg shadow-[#25D366]/20 text-lg">
-                <MessageCircle size={22} /> WhatsApp Us
+                <MessageCircle size={22} /> {t('model_details.whatsapp_us')}
              </a>
           </div>
         </div>

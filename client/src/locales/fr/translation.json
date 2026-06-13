@@ -10,6 +10,43 @@
     "discover_models": "Découvrir Nos Modèles",
     "discover_model": "Découvrir le modèle"
   },
+  "models_page": {
+    "title_our": "Nos",
+    "title_models": "Modèles",
+    "subtitle": "Explorez notre sélection de véhicules haut de gamme. Conçus pour l'excellence, pensés pour vous.",
+    "all_brands": "Toutes"
+  },
+  "model_details": {
+    "loading": "Chargement des données du véhicule...",
+    "back_to_models": "Retour aux modèles",
+    "request_info": "Demander des informations",
+    "view_gallery": "Voir la galerie",
+    "tabs": {
+      "overview": "Aperçu",
+      "specifications": "Spécifications",
+      "editions": "Éditions",
+      "features": "Caractéristiques",
+      "pricing": "Tarifs"
+    },
+    "specs_title": "Spécifications Techniques",
+    "editions_title": "Éditions Disponibles",
+    "features_title": "Caractéristiques Principales",
+    "pricing_title": "Informations Tarifaires",
+    "pricing_notice": "Les prix affichés peuvent varier en fonction des frais de transport, des coûts d'importation et des fluctuations du marché. Veuillez contacter notre équipe commerciale pour obtenir une offre actualisée.",
+    "version_1": "Version 1",
+    "version_2": "Version 2",
+    "version_3": "Version 3",
+    "engine": "Moteur",
+    "power": "Puissance",
+    "consumption": "Consommation",
+    "ready_to_drive": "Prêt à conduire le {{name}} ?",
+    "ready_subtitle": "Contactez notre équipe de vente pour une consultation exclusive, un essai routier ou un devis personnalisé.",
+    "request_call": "Demander un appel",
+    "whatsapp_us": "Contactez-nous sur WhatsApp"
+  },
+  "vehicle_card": {
+    "image_not_available": "Image non disponible"
+  },
   "home": {
     "hero": {
       "title": "CS Cars Agency",
@@ -54,6 +91,65 @@
     "timeline": {
       "completed": "Terminé",
       "pending": "En attente"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Notre équipe est à votre disposition pour vous accompagner dans le choix de votre prochain véhicule."
+    },
+    "cards": {
+      "phone": "Téléphone",
+      "whatsapp_action": "Contacter maintenant",
+      "location": "Adresse",
+      "hours": "Horaires",
+      "hours_weekdays": "Lun – Sam : 08h00 – 18h00",
+      "hours_sunday": "Dimanche : Fermé"
+    },
+    "form": {
+      "eyebrow": "Envoyez-nous un message",
+      "title": "Formulaire de contact",
+      "full_name": "Nom complet",
+      "phone": "Numéro de téléphone",
+      "email": "Adresse e-mail",
+      "vehicle": "Véhicule souhaité",
+      "message": "Votre message",
+      "message_placeholder": "Décrivez votre demande ou le véhicule qui vous intéresse…",
+      "submit": "Envoyer la demande",
+      "sending": "Envoi en cours…",
+      "success_title": "Message envoyé !",
+      "success_desc": "Notre équipe vous répondra dans les plus brefs délais.",
+      "send_another": "Envoyer un autre message"
+    },
+    "showroom": {
+      "eyebrow": "Notre showroom",
+      "title": "Visitez-nous",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "hours": "Horaires"
+    },
+    "map": {
+      "eyebrow": "Nous localiser",
+      "title": "Notre emplacement",
+      "directions": "Obtenir l'itinéraire"
+    },
+    "trust": {
+      "eyebrow": "Pourquoi nous choisir",
+      "title": "Pourquoi contacter CS Cars ?",
+      "personal_title": "Accompagnement personnalisé",
+      "personal_desc": "Nous vous aidons à choisir le véhicule adapté à vos besoins.",
+      "vehicles_title": "Véhicules sélectionnés",
+      "vehicles_desc": "Des modèles soigneusement sélectionnés pour garantir qualité et fiabilité.",
+      "service_title": "Service client réactif",
+      "service_desc": "Une équipe disponible pour répondre rapidement à toutes vos demandes.",
+      "expertise_title": "Expertise automobile",
+      "expertise_desc": "Conseils professionnels et accompagnement avant et après achat."
+    },
+    "cta": {
+      "eyebrow": "Prêt à commencer ?",
+      "title": "Prêt à trouver votre prochain véhicule ?",
+      "subtitle": "Contactez notre équipe aujourd'hui et obtenez des conseils personnalisés.",
+      "call": "Appeler maintenant"
     }
   },
   "footer": {
