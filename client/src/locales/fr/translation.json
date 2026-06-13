@@ -3,13 +3,20 @@
     "home": "Accueil",
     "services": "Services",
     "tracking": "Suivi de livraison",
-    "contact": "Contact"
+    "contact": "Contact",
+    "models": "Modèles",
+    "brands": "Marques",
+    "about": "À propos",
+    "discover_models": "Découvrir Nos Modèles",
+    "discover_model": "Découvrir le modèle"
   },
   "home": {
     "hero": {
       "title": "CS Cars Agency",
       "subtitle": "Importation de Voitures depuis la Chine vers l'Algérie",
       "description": "Nous sommes spécialistes dans l'importation de véhicules neufs et d'occasion (jusqu'à 3 ans) directement depuis la Chine avec inspection certifiée.",
+      "trust_subtitle_1": "Votre partenaire fiable et confiant.",
+      "trust_subtitle_2": "Achat et expo des véhicules Neufs.",
       "cta": "Découvrir nos services",
       "keywords": "importation voiture Chine, concessionnaire automobile Algérie, import voiture Chine Algérie, inspection véhicule Chine, voitures chinoises neuves"
     },

@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Models from './pages/Models';
+import ModelDetails from './pages/ModelDetails';
 // import Tracking from './pages/Tracking';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/models" element={<Models />} />
+          <Route path="/models/:modelId" element={<ModelDetails />} />
           {/* <Route path="/tracking" element={<Tracking />} /> */}
         </Routes>
       </Layout>
